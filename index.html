@@ -3,145 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Carter Automation Inc. | Managed IT & Security Solutions Florida</title>
-    <meta name="description" content="Expert Managed IT, advanced AI security systems, and high-performance network solutions for businesses in Florida.">
-    
+
+    <title>Carter Automation Consulting | Contractor Business Consulting Florida</title>
+    <meta name="description" content="Strategic business consulting built exclusively for contractors and construction firms in Florida. Grow your operations, win more bids, and build stronger teams.">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://carterautomation.us/">
-    <meta property="og:title" content="Carter Automation Inc. | Infrastructure & Security">
-    <meta property="og:description" content="Elevating business infrastructure with expert Managed IT and advanced security systems.">
+    <meta property="og:title" content="Carter Automation Consulting | Contractor Business Consulting">
+    <meta property="og:description" content="Strategic business consulting built exclusively for contractors and construction firms.">
     <meta property="og:image" content="https://carterautomation.us/logo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0a0a; color: #ffffff; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #ffffff, #a1a1a1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8c97a;
+            --dark: #0a0a0a;
+            --dark-2: #111111;
+            --dark-3: #161616;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--dark);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .display {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-gold {
+            background: rgba(201, 168, 76, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        .gold-text {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff 60%, #777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
+        }
+
+        .dot-grid {
+            background-image: radial-gradient(rgba(201,168,76,0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10,10,10,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+        }
+
+        .gold-line {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+
+        .service-card {
+            transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: rgba(201,168,76,0.35);
+            transform: translateY(-4px);
+            background: rgba(201,168,76,0.04);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #000;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: opacity 0.2s, transform 0.2s;
+            display: inline-block;
+        }
+        .btn-gold:hover { opacity: 0.88; transform: scale(1.02); }
+
+        .btn-outline {
+            border: 1px solid rgba(201,168,76,0.4);
+            color: var(--gold-light);
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: background 0.2s, border-color 0.2s;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: rgba(201,168,76,0.08);
+            border-color: rgba(201,168,76,0.7);
+        }
+
+        input, textarea {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #fff;
+            transition: border-color 0.2s;
+            font-family: 'DM Sans', sans-serif;
+            width: 100%;
+        }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(10,10,10,0.98);
+            border-top: 1px solid rgba(201,168,76,0.1);
+        }
+        #mobile-menu.open { display: flex; }
+
+        .step-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            color: rgba(201,168,76,0.1);
+            line-height: 1;
+            position: absolute;
+            top: -10px;
+            left: -6px;
+        }
+
+        .vert-divider {
+            width: 1px;
+            background: rgba(201,168,76,0.15);
+            align-self: stretch;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed w-full z-50 glass">
+    <!-- NAV -->
+    <nav>
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="logo.png" alt="Carter Automation Logo" class="h-8 w-auto">
-                <span class="font-extrabold tracking-tighter text-xl uppercase">Carter Automation Inc.</span>
+                <img src="logo.png" alt="Carter Automation Consulting Logo" class="h-8 w-auto" onerror="this.style.display='none'">
+                <div>
+                    <span class="font-bold tracking-widest text-sm uppercase text-white">Carter Automation</span>
+                    <span class="block text-[9px] tracking-[0.35em] uppercase font-bold" style="color:var(--gold)">Consulting</span>
+                </div>
             </div>
-            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+            <div class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
                 <a href="#services" class="hover:text-white transition">Services</a>
+                <a href="#process" class="hover:text-white transition">Process</a>
+                <a href="#why-us" class="hover:text-white transition">Why Us</a>
                 <a href="mailto:goodcarterllc@gmail.com" class="hover:text-white transition">Email Us</a>
-                <a href="tel:+17865853106" class="bg-white text-black px-5 py-2 hover:bg-gray-300 transition rounded-full">Call Now</a>
+                <a href="tel:+17865853106" class="btn-gold px-5 py-2.5 rounded-sm">Call Now</a>
             </div>
+            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open Menu">
+                <span class="block w-6 h-0.5 bg-white"></span>
+                <span class="block w-6 h-0.5 bg-white"></span>
+                <span class="block w-6 h-0.5 bg-white"></span>
+            </button>
+        </div>
+        <div id="mobile-menu">
+            <a href="#services" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white">Services</a>
+            <a href="#process" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white">Process</a>
+            <a href="#why-us" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white">Why Us</a>
+            <a href="mailto:goodcarterllc@gmail.com" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white">Email Us</a>
+            <a href="tel:+17865853106" class="btn-gold px-5 py-3 text-center rounded-sm">Call Now</a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-20" style="background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
-        <div class="relative z-10 text-center px-6">
-            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tighter gradient-text uppercase">
-                AUTOMATION <br>WITHOUT LIMITS
+    <!-- HERO -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden dot-grid">
+        <div class="absolute inset-0 z-0" style="background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%);"></div>
+        <div class="absolute left-0 top-0 h-full w-px" style="background: linear-gradient(180deg, transparent, rgba(201,168,76,0.15), transparent);"></div>
+        <div class="absolute right-0 top-0 h-full w-px" style="background: linear-gradient(180deg, transparent, rgba(201,168,76,0.15), transparent);"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+            <p class="text-xs font-bold uppercase tracking-[0.45em] mb-7" style="color:var(--gold)">Contractor Business Consulting — Florida</p>
+            <h1 class="text-7xl md:text-[108px] leading-none mb-7 gradient-text">
+                BUILD SMARTER.<br>
+                <span class="gold-text">WIN BIGGER.</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl mb-10 font-light">
-                Elevating your business infrastructure with expert Managed IT, advanced security systems, and high-performance connectivity.
+            <p class="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl mb-12 font-light leading-relaxed">
+                Strategic consulting built exclusively for contractors and construction firms ready to scale operations, win better contracts, and run a tighter business.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#services" class="bg-white text-black px-8 py-4 font-bold uppercase tracking-widest text-sm rounded-sm hover:scale-105 transition-transform">Our Services</a>
-                <a href="tel:+17865853106" class="border border-white/20 bg-white/5 px-8 py-4 font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-white/10 transition">Book an Audit</a>
+                <a href="#contact" class="btn-gold px-10 py-4 rounded-sm">Get a Free Consultation</a>
+                <a href="#services" class="btn-outline px-10 py-4 rounded-sm">Explore Services</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="mb-16">
-            <h2 class="text-xs font-bold text-gray-500 uppercase tracking-[0.3em] mb-2">Capabilities</h2>
-            <div class="h-1 w-20 bg-white mb-6"></div>
-            <h3 class="text-4xl font-bold uppercase">Enterprise Solutions.</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass p-10 hover:border-white/40 transition">
-                <h4 class="text-xl font-bold mb-4 uppercase">Managed IT (MSP)</h4>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Proactive IT support, 24/7 monitoring, and asset management to ensure your business never stops.</p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
-                    <li>• Help Desk Support</li>
-                    <li>• Backup & Disaster Recovery</li>
-                </ul>
+    <!-- SERVICES -->
+    <section id="services" class="py-28 px-6" style="background: var(--dark-2);">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal">
+                <p class="text-xs font-bold uppercase tracking-[0.4em] mb-3" style="color:var(--gold)">What We Do</p>
+                <div class="gold-line mb-5"></div>
+                <h2 class="text-5xl md:text-6xl uppercase">Consulting<br>Services.</h2>
             </div>
 
-            <div class="glass p-10 hover:border-white/40 transition">
-                <h4 class="text-xl font-bold mb-4 uppercase">Security Systems</h4>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">State-of-the-art surveillance and smart access control to protect your most valuable assets.</p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
-                    <li>• IP CCTV & AI Recognition</li>
-                    <li>• Biometric Access Control</li>
-                </ul>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-            <div class="glass p-10 hover:border-white/40 transition">
-                <h4 class="text-xl font-bold mb-4 uppercase">Network Management</h4>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Robust network design, Firewall configuration, and SD-WAN optimization for seamless connectivity.</p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
-                    <li>• Enterprise WiFi</li>
-                    <li>• Cybersecurity & Firewalls</li>
-                </ul>
-            </div>
-
-            <div class="glass p-10 hover:border-white/40 transition">
-                <h4 class="text-xl font-bold mb-4 uppercase">Structured Cabling</h4>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Certified installation of data and voice cabling (Cat6, Fiber Optic) for a flawless data backbone.</p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
-                    <li>• Fiber Optics</li>
-                    <li>• Rack Design & Labeling</li>
-                </ul>
-            </div>
-
-            <div class="glass p-10 hover:border-white/40 transition">
-                <h4 class="text-xl font-bold mb-4 uppercase">Cloud Services</h4>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Secure cloud migrations (Azure, AWS, Google Cloud) and managed SaaS solutions for remote collaboration.</p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
-                    <li>• Server Migration</li>
-                    <li>• Microsoft 365 Support</li>
-                </ul>
-            </div>
-
-            <div class="glass p-10 border-white/40 bg-white/10">
-                <h4 class="text-xl font-bold mb-4 uppercase">Custom Projects</h4>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Need a tailored solution? We design custom automation systems for industrial and corporate needs.</p>
-                <a href="#contact" class="text-white text-xs font-bold uppercase tracking-widest border-b border-white pb-1">Inquire Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-6 border-t border-white/10 bg-zinc-950">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tighter italic uppercase underline underline-offset-8">Let's Connect.</h2>
-                <p class="text-gray-500">Transform your business technology today.</p>
-            </div>
-            
-            <form action="https://formspree.io/f/xeekbpbr" method="POST" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Full Name" required class="bg-white/5 border border-white/10 p-4 rounded-sm focus:border-white outline-none transition text-white">
-                    <input type="email" name="email" placeholder="Email Address" required class="bg-white/5 border border-white/10 p-4 rounded-sm focus:border-white outline-none transition text-white">
+                <div class="service-card glass p-10 rounded-sm reveal">
+                    <h4 class="text-2xl mb-4 uppercase">Bid Strategy & Estimating</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Win more contracts with precision estimating, competitive bid positioning, and proposal development that sets you apart from the competition.</p>
+                    <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
+                        <li>— Competitive Bid Analysis</li>
+                        <li>— Cost Estimating Systems</li>
+                        <li>— Proposal Writing & Review</li>
+                    </ul>
                 </div>
-                <textarea name="message" rows="4" placeholder="Tell us about your project..." required class="w-full bg-white/5 border border-white/10 p-4 rounded-sm focus:border-white outline-none transition text-white"></textarea>
-                <button type="submit" class="w-full bg-white text-black font-bold py-4 uppercase tracking-[0.2em] text-sm hover:bg-gray-200 transition">Send Inquiry</button>
-            </form>
+
+                <div class="service-card glass p-10 rounded-sm reveal">
+                    <h4 class="text-2xl mb-4 uppercase">Financial Management</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Take control of your cash flow, job costing, and profitability. We build financial frameworks that keep your business healthy as you scale.</p>
+                    <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
+                        <li>— Job Costing & Overhead</li>
+                        <li>— Cash Flow Optimization</li>
+                        <li>— P&L Improvement Plans</li>
+                    </ul>
+                </div>
+
+                <div class="service-card glass p-10 rounded-sm reveal">
+                    <h4 class="text-2xl mb-4 uppercase">Operations & Workflow</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Eliminate inefficiencies, systematize your field operations, and build processes that scale without you needing to be on every job site.</p>
+                    <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
+                        <li>— SOP Development</li>
+                        <li>— Project Management Systems</li>
+                        <li>— Field & Office Workflows</li>
+                    </ul>
+                </div>
+
+                <div class="service-card glass p-10 rounded-sm reveal">
+                    <h4 class="text-2xl mb-4 uppercase">Crew & HR Consulting</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Hire right, retain your best workers, and build a company culture that attracts top-tier tradespeople in a competitive market.</p>
+                    <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
+                        <li>— Hiring & Onboarding Systems</li>
+                        <li>— Subcontractor Management</li>
+                        <li>— Compensation Structuring</li>
+                    </ul>
+                </div>
+
+                <div class="service-card glass p-10 rounded-sm reveal">
+                    <h4 class="text-2xl mb-4 uppercase">Business Development</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Grow your pipeline, build strategic partnerships, and position your firm to land larger commercial and residential contracts consistently.</p>
+                    <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-wide font-bold">
+                        <li>— Client Pipeline Development</li>
+                        <li>— GC & Developer Relations</li>
+                        <li>— Brand & Market Positioning</li>
+                    </ul>
+                </div>
+
+                <div class="service-card glass-gold p-10 rounded-sm reveal">
+                    <h4 class="text-2xl mb-4 uppercase gold-text">Custom Growth Plans</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Every contractor's situation is different. We design tailored roadmaps for firms that need a custom strategy to break through to the next level.</p>
+                    <a href="#contact" class="text-xs font-bold uppercase tracking-widest pb-1 border-b transition hover:opacity-70" style="color:var(--gold-light);border-color:var(--gold)">Inquire Now</a>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center px-6">
-        <img src="logo.png" alt="Carter Automation Footer Logo" class="h-8 mx-auto mb-6 opacity-50 grayscale">
+    <!-- WHY US -->
+    <section id="why-us" class="py-28 px-6" style="background:var(--dark);">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <p class="text-xs font-bold uppercase tracking-[0.4em] mb-3" style="color:var(--gold)">Why Carter</p>
+                <div class="gold-line mb-7"></div>
+                <h2 class="text-5xl md:text-6xl mb-8 leading-tight">WE SPEAK<br><span class="gold-text">CONTRACTOR.</span></h2>
+                <p class="text-gray-400 leading-relaxed mb-5">Most business consultants have never pulled a permit, managed a crew, or dealt with a client who won't pay. We understand the pressures that come with running a contracting business because we've been inside them.</p>
+                <p class="text-gray-400 leading-relaxed mb-10">That firsthand perspective is why our advice works in the real world — not just on paper.</p>
+                <a href="tel:+17865853106" class="btn-gold px-8 py-4 rounded-sm">Talk to a Consultant</a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 reveal">
+                <div class="glass service-card p-7 rounded-sm flex items-start gap-5">
+                    <div style="width:3px;min-height:40px;flex-shrink:0;background:linear-gradient(180deg,var(--gold),var(--gold-light));margin-top:4px;border-radius:2px;"></div>
+                    <div>
+                        <h4 class="text-xl mb-1 uppercase">Industry-Specific</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">100% focused on contractors. No generic small business templates.</p>
+                    </div>
+                </div>
+                <div class="glass service-card p-7 rounded-sm flex items-start gap-5">
+                    <div style="width:3px;min-height:40px;flex-shrink:0;background:linear-gradient(180deg,var(--gold),var(--gold-light));margin-top:4px;border-radius:2px;"></div>
+                    <div>
+                        <h4 class="text-xl mb-1 uppercase">Fast Implementation</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">We move fast. Strategies you can act on from day one.</p>
+                    </div>
+                </div>
+                <div class="glass service-card p-7 rounded-sm flex items-start gap-5">
+                    <div style="width:3px;min-height:40px;flex-shrink:0;background:linear-gradient(180deg,var(--gold),var(--gold-light));margin-top:4px;border-radius:2px;"></div>
+                    <div>
+                        <h4 class="text-xl mb-1 uppercase">Hands-On Partners</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">We work alongside you, not just hand off a report and disappear.</p>
+                    </div>
+                </div>
+                <div class="glass service-card p-7 rounded-sm flex items-start gap-5">
+                    <div style="width:3px;min-height:40px;flex-shrink:0;background:linear-gradient(180deg,var(--gold),var(--gold-light));margin-top:4px;border-radius:2px;"></div>
+                    <div>
+                        <h4 class="text-xl mb-1 uppercase">Florida-Based</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">Local market knowledge — Florida codes, licensing, and competition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="py-28 px-6" style="background:var(--dark-2);">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <p class="text-xs font-bold uppercase tracking-[0.4em] mb-3" style="color:var(--gold)">How It Works</p>
+                <div class="gold-line mb-6 mx-auto"></div>
+                <h2 class="text-5xl md:text-6xl">Our Process.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-5">
+                <div class="glass p-8 rounded-sm relative reveal" style="overflow:hidden;">
+                    <span class="step-num">01</span>
+                    <div class="relative z-10 mt-10">
+                        <div class="gold-line mb-5"></div>
+                        <h4 class="text-2xl mb-3 uppercase">Discovery Call</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">We learn your business, your goals, and the specific challenges holding you back right now.</p>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-sm relative reveal" style="overflow:hidden;">
+                    <span class="step-num">02</span>
+                    <div class="relative z-10 mt-10">
+                        <div class="gold-line mb-5"></div>
+                        <h4 class="text-2xl mb-3 uppercase">Business Audit</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">A deep dive into your operations, financials, and pipeline to identify opportunities and gaps.</p>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-sm relative reveal" style="overflow:hidden;">
+                    <span class="step-num">03</span>
+                    <div class="relative z-10 mt-10">
+                        <div class="gold-line mb-5"></div>
+                        <h4 class="text-2xl mb-3 uppercase">Strategic Roadmap</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">A custom, prioritized action plan built around your specific situation — not a generic template.</p>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-sm relative reveal" style="overflow:hidden;">
+                    <span class="step-num">04</span>
+                    <div class="relative z-10 mt-10">
+                        <div class="gold-line mb-5"></div>
+                        <h4 class="text-2xl mb-3 uppercase">Implementation</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">We work alongside you to execute the plan and drive real, measurable results for your firm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-28 px-6" style="background:var(--dark-3);">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-xs font-bold uppercase tracking-[0.4em] mb-3" style="color:var(--gold)">Get Started</p>
+                <div class="gold-line mb-6 mx-auto"></div>
+                <h2 class="text-5xl md:text-6xl mb-4">Let's Build<br>Your Future.</h2>
+                <p class="text-gray-500 text-sm">Book a free 30-minute strategy call. No pressure, no pitch — just clarity on where your business stands and where it can go.</p>
+            </div>
+
+            <form action="https://formspree.io/f/xeekbpbr" method="POST" class="space-y-4 reveal">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" name="name" placeholder="Full Name" required class="p-4 rounded-sm">
+                    <input type="email" name="email" placeholder="Email Address" required class="p-4 rounded-sm">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="tel" name="phone" placeholder="Phone Number" class="p-4 rounded-sm">
+                    <input type="text" name="trade" placeholder="Your Trade / Specialty" class="p-4 rounded-sm">
+                </div>
+                <textarea name="message" rows="4" placeholder="What's your biggest challenge right now?" required class="p-4 rounded-sm"></textarea>
+                <button type="submit" class="btn-gold w-full py-4 rounded-sm text-sm tracking-[0.2em]">Book My Free Strategy Call</button>
+            </form>
+
+            <div class="mt-12 flex flex-col md:flex-row justify-center items-center gap-6 text-center text-sm text-gray-500 reveal">
+                <a href="tel:+17865853106" class="hover:text-white transition">(786) 585-3106</a>
+                <span class="hidden md:block vert-divider" style="height:18px;"></span>
+                <a href="mailto:goodcarterllc@gmail.com" class="hover:text-white transition">goodcarterllc@gmail.com</a>
+                <span class="hidden md:block vert-divider" style="height:18px;"></span>
+                <span>Florida, USA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-6 text-center border-t" style="border-color:rgba(201,168,76,0.1);background:var(--dark);">
+        <img src="logo.png" alt="Carter Automation Consulting" class="h-8 mx-auto mb-4 opacity-30 grayscale" onerror="this.style.display='none'">
+        <p class="text-xl mb-2 opacity-20" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.12em;">CARTER AUTOMATION CONSULTING</p>
         <p class="text-[10px] text-gray-600 uppercase tracking-[0.5em] font-bold">
-            &copy; 2026 Carter Automation Inc. | Florida, USA.
+            &copy; 2026 Carter Automation Consulting | Florida, USA. All Rights Reserved.
         </p>
     </footer>
 
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
