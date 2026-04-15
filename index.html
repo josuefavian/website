@@ -1,1557 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carter — Consulting</title>
-  <meta name="description" content="Carter is a premier consulting firm specializing in Financial Services, Permit Expediting, and Business Development for Construction and Real Estate industries." />
-
-  <!-- Google Fonts: Cormorant Garamond (luxury serif) + DM Sans (clean sans) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ============================================================
-       CSS VARIABLES & RESET
-    ============================================================ */
-    :root {
-      --black:       #0a0a0a;
-      --white:       #fafaf8;
-      --gray-100:    #f4f3f0;
-      --gray-200:    #e8e6e1;
-      --gray-400:    #a09e99;
-      --gray-600:    #6b6965;
-      --gold:        #b89a5a;
-      --gold-light:  #d4b87a;
-      --serif:       'Cormorant Garamond', Georgia, serif;
-      --sans:        'DM Sans', system-ui, sans-serif;
-      --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-w:       1160px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      background: var(--white);
-      color: var(--black);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ============================================================
-       UTILITY
-    ============================================================ */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .serif { font-family: var(--serif); }
-
-    .gold-line {
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-
-    .section-label {
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    /* ============================================================
-       ANIMATIONS
-    ============================================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ============================================================
-       LANGUAGE TOGGLE
-    ============================================================ */
-    .lang-toggle {
-      position: fixed;
-      top: 1.5rem;
-      right: 2rem;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 0;
-      background: rgba(10,10,10,0.85);
-      border: 1px solid rgba(184,154,90,0.3);
-      border-radius: 2px;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-    }
-
-    .lang-toggle button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0.4rem 0.75rem;
-      font-family: var(--sans);
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray-400);
-      transition: color var(--transition), background var(--transition);
-    }
-
-    .lang-toggle button.active {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    .lang-toggle button:hover:not(.active) {
-      color: var(--white);
-    }
-
-    /* ============================================================
-       NAVIGATION
-    ============================================================ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 900;
-      padding: 1.5rem 0;
-      transition: background var(--transition), padding var(--transition), border-bottom var(--transition);
-    }
-
-    nav.scrolled {
-      background: rgba(250,250,248,0.95);
-      backdrop-filter: blur(12px);
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--gray-200);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: var(--black);
-      text-transform: uppercase;
-    }
-
-    /* Gold dot accent */
-    .nav-logo span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray-600);
-      transition: color var(--transition);
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width var(--transition);
-    }
-
-    .nav-links a:hover { color: var(--black); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* Mobile menu button */
-    .nav-menu-btn {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .nav-menu-btn span {
-      display: block;
-      width: 22px;
-      height: 1px;
-      background: var(--black);
-      transition: var(--transition);
-    }
-
-    /* Mobile nav overlay */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--black);
-      z-index: 950;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-    }
-
-    .mobile-nav.open { display: flex; }
-
-    .mobile-nav a {
-      font-family: var(--serif);
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--white);
-      letter-spacing: 0.05em;
-      transition: color var(--transition);
-    }
-
-    .mobile-nav a:hover { color: var(--gold); }
-
-    .mobile-nav-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 1.5rem;
-      cursor: pointer;
-      font-family: var(--sans);
-      font-weight: 300;
-    }
-
-    /* ============================================================
-       HERO SECTION
-    ============================================================ */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      background: var(--black);
-      overflow: hidden;
-    }
-
-    /* Subtle texture overlay */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 70% 50%, rgba(184,154,90,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 80%, rgba(184,154,90,0.04) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    /* Decorative vertical line */
-    #hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, rgba(184,154,90,0.15), transparent);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 8rem 0 6rem;
-      max-width: 720px;
-    }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-eyebrow-line {
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .hero-eyebrow-text {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .hero-headline {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .hero-headline em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--gray-400);
-      max-width: 480px;
-      margin-bottom: 3rem;
-      line-height: 1.8;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* ============================================================
-       BUTTONS
-    ============================================================ */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
-      background: var(--gold);
-      color: var(--black);
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border: 1px solid var(--gold);
-      cursor: pointer;
-      transition: background var(--transition), color var(--transition);
-      border-radius: 1px;
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-      border-color: var(--gold-light);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
-      background: transparent;
-      color: var(--white);
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.25);
-      cursor: pointer;
-      transition: border-color var(--transition), color var(--transition);
-      border-radius: 1px;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .btn-primary-dark {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border: 1px solid var(--black);
-      cursor: pointer;
-      transition: background var(--transition), color var(--transition);
-      border-radius: 1px;
-    }
-
-    .btn-primary-dark:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--black);
-    }
-
-    /* Scroll indicator */
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hero-scroll-line {
-      width: 30px;
-      height: 1px;
-      background: var(--gray-600);
-    }
-
-    .hero-scroll-text {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray-600);
-    }
-
-    /* ============================================================
-       ABOUT SECTION
-    ============================================================ */
-    #about {
-      padding: 8rem 0;
-      background: var(--white);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-
-    .about-left h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .about-left p {
-      color: var(--gray-600);
-      margin-bottom: 1.25rem;
-      font-size: 0.95rem;
-      line-height: 1.85;
-    }
-
-    .about-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--gray-200);
-    }
-
-    .about-stat {
-      background: var(--white);
-      padding: 2rem 2rem 2rem 2.5rem;
-      border-left: 2px solid transparent;
-      transition: border-color var(--transition);
-      position: relative;
-    }
-
-    .about-stat:hover {
-      border-left-color: var(--gold);
-    }
-
-    .about-stat-num {
-      font-family: var(--serif);
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: var(--black);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .about-stat-label {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-400);
-    }
-
-    /* Industry tags */
-    .industry-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .tag {
-      padding: 0.4rem 1rem;
-      border: 1px solid var(--gray-200);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-600);
-      border-radius: 1px;
-    }
-
-    /* ============================================================
-       SERVICES SECTION
-    ============================================================ */
-    #services {
-      padding: 8rem 0;
-      background: var(--gray-100);
-    }
-
-    .services-header {
-      max-width: 520px;
-      margin-bottom: 5rem;
-    }
-
-    .services-header h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--gray-200);
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: background var(--transition);
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .service-card-num {
-      font-family: var(--serif);
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--gray-200);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .service-card-icon {
-      width: 32px;
-      height: 32px;
-      margin-bottom: 1.25rem;
-      color: var(--gold);
-    }
-
-    .service-card h3 {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .service-card p {
-      font-size: 0.88rem;
-      color: var(--gray-600);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .service-list li {
-      font-size: 0.82rem;
-      color: var(--gray-600);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .service-list li::before {
-      content: '';
-      width: 16px;
-      height: 1px;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* ============================================================
-       TRUST / AUTHORITY SECTION
-    ============================================================ */
-    #trust {
-      padding: 8rem 0;
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #trust::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(184,154,90,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .trust-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .trust-headline {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.2;
-      max-width: 680px;
-      margin-bottom: 4rem;
-      letter-spacing: -0.01em;
-    }
-
-    .trust-headline em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-
-    .trust-pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.06);
-      margin-bottom: 4rem;
-    }
-
-    .trust-pillar {
-      background: transparent;
-      padding: 2.5rem 2rem;
-      border-top: 1px solid rgba(184,154,90,0.25);
-      transition: background var(--transition);
-    }
-
-    .trust-pillar:hover {
-      background: rgba(184,154,90,0.04);
-    }
-
-    .trust-pillar-icon {
-      margin-bottom: 1rem;
-      color: var(--gold);
-    }
-
-    .trust-pillar h4 {
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.6rem;
-    }
-
-    .trust-pillar p {
-      font-size: 0.85rem;
-      color: var(--gray-400);
-      line-height: 1.8;
-    }
-
-    .trust-cta-row {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .trust-cta-text {
-      font-size: 0.85rem;
-      color: var(--gray-400);
-    }
-
-    /* ============================================================
-       CONTACT SECTION
-    ============================================================ */
-    #contact {
-      padding: 8rem 0;
-      background: var(--white);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .contact-left h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.25rem;
-    }
-
-    .contact-left p {
-      font-size: 0.93rem;
-      color: var(--gray-600);
-      line-height: 1.85;
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .contact-item-icon {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--gray-200);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--gold);
-    }
-
-    .contact-item-body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-item-label {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray-400);
-      margin-bottom: 0.15rem;
-    }
-
-    .contact-item-value {
-      font-size: 0.9rem;
-      color: var(--black);
-    }
-
-    /* Form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .form-group label {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray-400);
-    }
-
-    .form-group input,
-    .form-group textarea {
-      background: var(--gray-100);
-      border: 1px solid transparent;
-      border-bottom: 1px solid var(--gray-200);
-      padding: 0.85rem 1rem;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--black);
-      outline: none;
-      transition: border-color var(--transition), background var(--transition);
-      border-radius: 1px;
-      width: 100%;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-      background: var(--white);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 130px;
-    }
-
-    .form-submit {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .form-note {
-      font-size: 0.75rem;
-      color: var(--gray-400);
-    }
-
-    /* Success message */
-    .form-success {
-      display: none;
-      padding: 1rem 1.5rem;
-      background: rgba(184,154,90,0.08);
-      border: 1px solid rgba(184,154,90,0.3);
-      color: var(--black);
-      font-size: 0.88rem;
-      border-radius: 1px;
-    }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      background: var(--black);
-      padding: 3rem 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .footer-logo {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .footer-logo span { color: var(--gold); }
-
-    .footer-copy {
-      font-size: 0.72rem;
-      color: var(--gray-600);
-      letter-spacing: 0.05em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-600);
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .trust-pillars { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .nav-menu-btn { display: flex; }
-    }
-
-    @media (max-width: 600px) {
-      .lang-toggle { right: 1rem; }
-      .hero-ctas { flex-direction: column; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carter Automation — Back Office & Financial Advisory</title>
+<meta name="description" content="Back office and financial advisory for HVAC, electrical, and construction contractors in South Florida. Accounting, payroll, invoices, collections, and more.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0D0D0D;--ink2:#444;--ink3:#888;--line:rgba(0,0,0,0.1);--bg:#FAFAF8;--accent:#1A3C6E}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia',serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:0.5px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:100}
+.nav-brand{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:18px;font-weight:500;letter-spacing:.06em;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-lang{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.08em;border:0.5px solid var(--line);padding:4px 10px;border-radius:2px;cursor:pointer;background:none;transition:color .2s}
+.nav-lang:hover{color:var(--ink)}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.nav-mobile-btn span{display:block;width:22px;height:1px;background:var(--ink)}
+.nav-mobile-menu{display:none;flex-direction:column;gap:0;border-top:0.5px solid var(--line)}
+.nav-mobile-menu a{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);text-decoration:none;padding:16px 48px;border-bottom:0.5px solid var(--line);letter-spacing:.04em;text-transform:uppercase}
+
+/* HERO */
+#hero{padding:100px 48px 80px;border-bottom:0.5px solid var(--line)}
+.hero-tag{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px}
+#hero h1{font-size:52px;font-weight:400;line-height:1.15;max-width:640px;margin-bottom:24px}
+#hero h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;color:var(--ink2);max-width:480px;line-height:1.75;margin-bottom:40px}
+.hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.btn-primary{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;padding:13px 28px;border:none;cursor:pointer;border-radius:2px;text-decoration:none;display:inline-block;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:4px;transition:color .2s}
+.btn-secondary:hover{color:var(--ink)}
+.scroll-hint{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.06em;margin-top:56px;display:flex;align-items:center;gap:8px}
+.scroll-hint:after{content:'';display:block;width:32px;height:0.5px;background:var(--ink3)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:0.5px solid var(--line)}
+.stat{padding:32px 48px;border-right:0.5px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.stat-label{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+
+/* ABOUT */
+#about{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--line)}
+.about-left{padding:64px 48px;border-right:0.5px solid var(--line)}
+.about-right{padding:64px 48px}
+.section-tag{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+.about-left h2{font-size:30px;font-weight:400;line-height:1.3;margin-bottom:20px}
+.about-left h2 em{font-style:italic;color:var(--accent)}
+.about-left p{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:16px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tag{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);border:0.5px solid var(--line);padding:5px 12px;border-radius:2px;letter-spacing:.04em}
+.pillars{display:flex;flex-direction:column;gap:0}
+.pillar{padding:28px 0;border-bottom:0.5px solid var(--line)}
+.pillar:first-child{padding-top:0}
+.pillar:last-child{border-bottom:none;padding-bottom:0}
+.pillar-title{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;font-weight:500;margin-bottom:6px}
+.pillar-desc{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);line-height:1.7}
+
+/* SERVICES */
+.services-header{padding:64px 48px 40px;border-bottom:0.5px solid var(--line)}
+.services-header h2{font-size:30px;font-weight:400;line-height:1.3}
+.services-header h2 em{font-style:italic;color:var(--accent)}
+#services{border-bottom:0.5px solid var(--line)}
+.service-item{display:grid;grid-template-columns:80px 1fr 1fr;border-bottom:0.5px solid var(--line);padding:48px 48px;gap:32px;align-items:start}
+.service-item:last-child{border-bottom:none}
+.service-num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.08em;padding-top:6px}
+.service-title{font-size:22px;font-weight:400;margin-bottom:14px}
+.service-desc{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);line-height:1.75;margin-bottom:16px}
+.service-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);font-style:italic}
+.service-bullets{list-style:none;display:flex;flex-direction:column;gap:10px}
+.service-bullets li{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.service-bullets li:before{content:"—";color:var(--ink3);flex-shrink:0;margin-top:0}
+
+/* APPROACH */
+#approach{padding:64px 48px;border-bottom:0.5px solid var(--line)}
+#approach h2{font-size:30px;font-weight:400;margin-bottom:40px;line-height:1.3}
+#approach h2 em{font-style:italic;color:var(--accent)}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid var(--line)}
+.approach-card{padding:32px 28px;border-right:0.5px solid var(--line)}
+.approach-card:last-child{border-right:none}
+.approach-card-title{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;margin-bottom:10px}
+.approach-card-desc{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);line-height:1.7}
+
+/* CTA BAR */
+.cta-bar{padding:80px 48px;border-bottom:0.5px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-bar h2{font-size:36px;font-weight:400;max-width:480px;line-height:1.25}
+.cta-bar h2 em{font-style:italic;color:var(--accent)}
+.cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.cta-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3)}
+
+/* CONTACT */
+#contact{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--line)}
+.contact-left{padding:64px 48px;border-right:0.5px solid var(--line)}
+.contact-right{padding:64px 48px}
+.contact-left h2{font-size:28px;font-weight:400;margin-bottom:16px;line-height:1.3}
+.contact-left p{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink2);margin-bottom:36px;line-height:1.75}
+.contact-detail{margin-bottom:24px}
+.contact-detail-label{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.contact-detail-val{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink)}
+.contact-detail-val a{color:var(--ink);text-decoration:none}
+.form-field{margin-bottom:24px}
+.form-field label{display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.form-field input,.form-field textarea,.form-field select{width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink);background:transparent;border:none;border-bottom:0.5px solid var(--ink);padding:8px 0;outline:none;border-radius:0}
+.form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--accent)}
+.form-field textarea{resize:none;height:90px}
+.form-submit{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;padding:13px 28px;border:none;cursor:pointer;border-radius:2px;margin-top:8px;transition:opacity .2s}
+.form-submit:hover{opacity:.85}
+.form-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);margin-top:12px}
+
+/* FOOTER */
+footer{display:flex;align-items:center;justify-content:space-between;padding:24px 48px;flex-wrap:wrap;gap:16px}
+.footer-brand{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;letter-spacing:.04em}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);text-decoration:none}
+.footer-links a:hover{color:var(--ink)}
+.footer-copy{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .nav-mobile-btn{display:flex}
+  .nav-mobile-menu.open{display:flex}
+  #hero{padding:64px 24px 48px}
+  #hero h1{font-size:36px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:24px}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(3){border-right:0.5px solid var(--line)}
+  #about{grid-template-columns:1fr}
+  .about-left{border-right:none;border-bottom:0.5px solid var(--line);padding:40px 24px}
+  .about-right{padding:40px 24px}
+  .services-header{padding:40px 24px}
+  .service-item{grid-template-columns:1fr;padding:40px 24px;gap:24px}
+  .service-num{padding-top:0}
+  #approach{padding:40px 24px}
+  .approach-grid{grid-template-columns:1fr}
+  .approach-card{border-right:none;border-bottom:0.5px solid var(--line)}
+  .approach-card:last-child{border-bottom:none}
+  .cta-bar{padding:48px 24px;flex-direction:column;align-items:flex-start}
+  .cta-bar h2{font-size:28px}
+  #contact{grid-template-columns:1fr}
+  .contact-left{border-right:none;border-bottom:0.5px solid var(--line);padding:40px 24px}
+  .contact-right{padding:40px 24px}
+  footer{padding:20px 24px;flex-direction:column;align-items:flex-start;gap:12px}
+}
+</style>
 </head>
 <body>
 
-  <!-- ============================================================
-       LANGUAGE TOGGLE
-  ============================================================ -->
-  <div class="lang-toggle" role="group" aria-label="Language selector">
-    <button id="btn-en" class="active" onclick="setLang('en')" aria-pressed="true">EN</button>
-    <button id="btn-es" onclick="setLang('es')" aria-pressed="false">ES</button>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">Carter.</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#approach">Approach</a>
+    <a href="#contact">Contact</a>
   </div>
+  <button class="nav-lang" onclick="toggleLang(this)">EN / ES</button>
+  <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#approach" onclick="closeMenu()">Approach</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
-  <!-- ============================================================
-       NAVIGATION
-  ============================================================ -->
-  <nav id="main-nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">Carter<span>.</span></a>
-      <ul class="nav-links">
-        <li><a href="#about"    data-i18n="nav.about">About</a></li>
-        <li><a href="#services" data-i18n="nav.services">Services</a></li>
-        <li><a href="#trust"    data-i18n="nav.approach">Approach</a></li>
-        <li><a href="#contact"  data-i18n="nav.contact">Contact</a></li>
-      </ul>
-      <button class="nav-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile Nav Overlay -->
-  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <button class="mobile-nav-close" id="menu-close" aria-label="Close menu">✕</button>
-    <a href="#about"    data-i18n="nav.about"    onclick="closeMobileNav()">About</a>
-    <a href="#services" data-i18n="nav.services"  onclick="closeMobileNav()">Services</a>
-    <a href="#trust"    data-i18n="nav.approach"  onclick="closeMobileNav()">Approach</a>
-    <a href="#contact"  data-i18n="nav.contact"   onclick="closeMobileNav()">Contact</a>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag sans">Back Office Firm · South Florida</div>
+  <h1>Your back office,<br><em>fully managed.</em></h1>
+  <p class="hero-sub sans">Accounting, payroll, invoices, collections, and financial strategy — engineered for HVAC, electrical, and construction contractors.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary sans">Schedule a Consultation</a>
+    <button class="btn-secondary sans" onclick="document.getElementById('services-section').scrollIntoView({behavior:'smooth'})">Our Services</button>
   </div>
+  <div class="scroll-hint sans">Scroll</div>
+</section>
 
-  <!-- ============================================================
-       HERO SECTION
-  ============================================================ -->
-  <section id="hero" aria-label="Hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-eyebrow reveal">
-          <div class="hero-eyebrow-line"></div>
-          <span class="hero-eyebrow-text" data-i18n="hero.eyebrow">Consulting Firm · South Florida</span>
-        </div>
-        <h1 class="hero-headline reveal reveal-delay-1" data-i18n-html="hero.headline">
-          Precision.<br><em>Built for Business.</em>
-        </h1>
-        <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">
-          Financial strategy, permit expediting, and business development — engineered for construction and real estate professionals.
-        </p>
-        <div class="hero-ctas reveal reveal-delay-3">
-          <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Schedule a Consultation</a>
-          <a href="#services" class="btn-outline" data-i18n="hero.cta2">Our Services</a>
-        </div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Service Tiers</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Industry-Focused</div></div>
+  <div class="stat"><div class="stat-num">EN / ES</div><div class="stat-label">Bilingual Service</div></div>
+  <div class="stat"><div class="stat-num">786</div><div class="stat-label">Local Miami Expertise</div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="section-tag sans">About Carter</div>
+    <h2>A firm built on<br><em>precision and results.</em></h2>
+    <p class="sans">Carter Automation is a back office and financial advisory firm dedicated to the operational success of contractors in South Florida. We handle everything behind the scenes so you can focus on the jobs and getting clients — nothing else.</p>
+    <p class="sans">Our approach is direct, meticulous, and results-oriented. We work as a true partner, not just a service provider. And we operate with one clear goal: position your company to qualify for financing and grow to the next level.</p>
+    <div class="tag-row">
+      <span class="tag">HVAC</span>
+      <span class="tag">Electrical</span>
+      <span class="tag">Construction</span>
+      <span class="tag">Miami-Dade</span>
+      <span class="tag">Broward</span>
+      <span class="tag">QBO ProAdvisor</span>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-title sans">Precision</div>
+        <div class="pillar-desc sans">Every engagement is approached with meticulous attention to detail. Accuracy is non-negotiable — your books reflect your business.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title sans">Industry Expertise</div>
+        <div class="pillar-desc sans">We specialize in contractors — not general practice. HVAC, electrical, and construction is our depth, not a category.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title sans">Partnership</div>
+        <div class="pillar-desc sans">We operate as an extension of your team — proactive, accountable, and fully aligned with your growth goals.</div>
       </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll-line"></div>
-      <span class="hero-scroll-text" data-i18n="hero.scroll">Scroll</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="services-header" id="services-section">
+  <div class="section-tag sans">Services</div>
+  <h2>What we do, <em>done right.</em></h2>
+</div>
+<div id="services">
+  <div class="service-item">
+    <div class="service-num sans">01</div>
+    <div>
+      <div class="service-title">Full Back Office +<br>Financial Advisory</div>
+      <p class="service-desc sans">We manage your entire back office so you focus on the work and getting clients — nothing else. The most complete level of support we offer.</p>
+      <p class="service-note sans">Best for growing contractors who want everything handled.</p>
     </div>
-  </section>
-
-  <!-- ============================================================
-       ABOUT SECTION
-  ============================================================ -->
-  <section id="about" aria-labelledby="about-heading">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <span class="section-label reveal" data-i18n="about.label">About Carter</span>
-          <h2 id="about-heading" class="reveal reveal-delay-1" data-i18n-html="about.headline">
-            A firm built on<br>precision and results.
-          </h2>
-          <p class="reveal reveal-delay-2" data-i18n="about.p1">
-            Carter is a consulting firm dedicated to the financial and operational success of construction and real estate companies. We bring clarity to complex processes — from bookkeeping to permitting — so our clients can build with confidence.
-          </p>
-          <p class="reveal reveal-delay-3" data-i18n="about.p2">
-            Our approach is direct, meticulous, and results-oriented. We operate as a true partner, not just a service provider.
-          </p>
-          <div class="industry-tags reveal reveal-delay-4">
-            <span class="tag" data-i18n="about.tag1">Construction</span>
-            <span class="tag" data-i18n="about.tag2">Real Estate</span>
-            <span class="tag" data-i18n="about.tag3">HVAC</span>
-            <span class="tag" data-i18n="about.tag4">South Florida</span>
-          </div>
-        </div>
-        <div class="about-right reveal reveal-delay-2">
-          <div class="about-stat">
-            <div class="about-stat-num">3</div>
-            <div class="about-stat-label" data-i18n="about.stat1">Core Service Areas</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">100%</div>
-            <div class="about-stat-label" data-i18n="about.stat2">Industry-Focused</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">EN / ES</div>
-            <div class="about-stat-label" data-i18n="about.stat3">Bilingual Service</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">786</div>
-            <div class="about-stat-label" data-i18n="about.stat4">Local Miami Expertise</div>
-          </div>
-        </div>
-      </div>
+    <ul class="service-bullets">
+      <li>Accounting &amp; bookkeeping up to date</li>
+      <li>Payroll &amp; 1099s for subcontractors</li>
+      <li>Quotes &amp; invoices to your clients</li>
+      <li>Collections — we follow up on payments for you</li>
+      <li>Engineers for permit plans &amp; calculations</li>
+      <li>Loan qualification strategy &amp; CFO advisory</li>
+      <li>Marketing team connection (optional, separate cost)</li>
+    </ul>
+  </div>
+  <div class="service-item">
+    <div class="service-num sans">02</div>
+    <div>
+      <div class="service-title">Accounting &amp;<br>Bookkeeping</div>
+      <p class="service-desc sans">Keep your books clean and your numbers clear. The right foundation for any contractor serious about their finances.</p>
+      <p class="service-note sans">Perfect starting point. Upgrade to Full Back Office anytime.</p>
     </div>
-  </section>
+    <ul class="service-bullets">
+      <li>Accounting &amp; bookkeeping up to date</li>
+      <li>Monthly bank reconciliation</li>
+      <li>P&amp;L, Balance Sheet &amp; Cash Flow reports</li>
+    </ul>
+  </div>
+</div>
 
-  <!-- ============================================================
-       SERVICES SECTION
-  ============================================================ -->
-  <section id="services" aria-labelledby="services-heading">
-    <div class="container">
-      <div class="services-header">
-        <span class="section-label reveal" data-i18n="services.label">Services</span>
-        <h2 id="services-heading" class="reveal reveal-delay-1" data-i18n-html="services.headline">
-          What we do,<br>done right.
-        </h2>
-      </div>
-
-      <div class="services-grid">
-
-        <!-- Card 1: Financial Services -->
-        <article class="service-card reveal">
-          <div class="service-card-num">01</div>
-          <svg class="service-card-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="4" y="8" width="24" height="18" rx="1"/>
-            <path d="M4 13h24M10 13v13M22 13v13"/>
-            <path d="M16 6v2"/>
-          </svg>
-          <h3 data-i18n="services.fin.title">Financial Services</h3>
-          <p data-i18n="services.fin.desc">Complete financial management for contractors and developers — from daily bookkeeping to long-term planning.</p>
-          <ul class="service-list">
-            <li data-i18n="services.fin.l1">Accounting</li>
-            <li data-i18n="services.fin.l2">Bookkeeping</li>
-            <li data-i18n="services.fin.l3">Tax Preparation & Strategy</li>
-            <li data-i18n="services.fin.l4">Financial Planning & Reporting</li>
-          </ul>
-        </article>
-
-        <!-- Card 2: Permit Expediting -->
-        <article class="service-card reveal reveal-delay-1">
-          <div class="service-card-num">02</div>
-          <svg class="service-card-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M8 4h16v24H8z"/>
-            <path d="M12 10h8M12 15h8M12 20h5"/>
-            <path d="M22 22l3 3"/>
-          </svg>
-          <h3 data-i18n="services.permit.title">Permit Expediting</h3>
-          <p data-i18n="services.permit.desc">Navigate city permitting with zero delays. We handle the paperwork so your projects stay on schedule.</p>
-          <ul class="service-list">
-            <li data-i18n="services.permit.l1">City Permit Handling</li>
-            <li data-i18n="services.permit.l2">All Trades & Project Types</li>
-            <li data-i18n="services.permit.l3">Fast, Compliant Processing</li>
-            <li data-i18n="services.permit.l4">Status Tracking & Follow-up</li>
-          </ul>
-        </article>
-
-        <!-- Card 3: Business Development -->
-        <article class="service-card reveal reveal-delay-2">
-          <div class="service-card-num">03</div>
-          <svg class="service-card-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="16" cy="16" r="12"/>
-            <path d="M16 10v6l4 2"/>
-            <path d="M10 22l2-2M22 22l-2-2"/>
-          </svg>
-          <h3 data-i18n="services.biz.title">Business Development</h3>
-          <p data-i18n="services.biz.desc">Operational systems, marketing advisory, and software consulting to grow your business intelligently.</p>
-          <ul class="service-list">
-            <li data-i18n="services.biz.l1">Workflow System Implementation</li>
-            <li data-i18n="services.biz.l2">Marketing Advisory</li>
-            <li data-i18n="services.biz.l3">Accounting Software Consulting</li>
-            <li data-i18n="services.biz.l4">Project Management Tools</li>
-          </ul>
-        </article>
-
-      </div>
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-tag sans">Approach</div>
+  <h2>We don't just consult. We <em>deliver outcomes.</em></h2>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-card-title sans">Precision</div>
+      <div class="approach-card-desc sans">Every number is reconciled, every filing is on time. We treat your books like they're our own.</div>
     </div>
-  </section>
-
-  <!-- ============================================================
-       TRUST / AUTHORITY SECTION
-  ============================================================ -->
-  <section id="trust" aria-labelledby="trust-heading">
-    <div class="container trust-inner">
-      <h2 id="trust-heading" class="trust-headline reveal" data-i18n-html="trust.headline">
-        We don't just consult.<br>We <em>deliver outcomes.</em>
-      </h2>
-
-      <div class="trust-pillars">
-        <div class="trust-pillar reveal">
-          <svg class="trust-pillar-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M9 12l2 2 4-4"/>
-            <circle cx="12" cy="12" r="10"/>
-          </svg>
-          <h4 data-i18n="trust.p1.title">Precision</h4>
-          <p data-i18n="trust.p1.desc">Every engagement is approached with meticulous attention to detail. Accuracy is non-negotiable.</p>
-        </div>
-        <div class="trust-pillar reveal reveal-delay-1">
-          <svg class="trust-pillar-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-          <h4 data-i18n="trust.p2.title">Industry Expertise</h4>
-          <p data-i18n="trust.p2.desc">We specialize in construction and real estate — not general practice. Your industry is our depth.</p>
-        </div>
-        <div class="trust-pillar reveal reveal-delay-2">
-          <svg class="trust-pillar-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-          </svg>
-          <h4 data-i18n="trust.p3.title">Partnership</h4>
-          <p data-i18n="trust.p3.desc">We operate as an extension of your team — proactive, accountable, and fully aligned with your goals.</p>
-        </div>
-      </div>
-
-      <div class="trust-cta-row reveal">
-        <a href="#contact" class="btn-primary" data-i18n="trust.cta">Work With Us</a>
-        <span class="trust-cta-text" data-i18n="trust.ctanote">Available in English & Spanish</span>
-      </div>
+    <div class="approach-card">
+      <div class="approach-card-title sans">Loan-Ready Books</div>
+      <div class="approach-card-desc sans">We organize your finances with a clear objective: qualify for credit lines, SBA loans, and take your company to the next level.</div>
     </div>
-  </section>
+    <div class="approach-card">
+      <div class="approach-card-title sans">No Long-Term Contracts</div>
+      <div class="approach-card-desc sans">Month-to-month. If you don't see value, you don't stay. We earn your business every month.</div>
+    </div>
+  </div>
+</section>
 
-  <!-- ============================================================
-       CONTACT SECTION
-  ============================================================ -->
-  <section id="contact" aria-labelledby="contact-heading">
-    <div class="container">
-      <div class="contact-grid">
+<!-- CTA -->
+<div class="cta-bar">
+  <h2>Ready to streamline your business and <em>grow?</em></h2>
+  <div class="cta-right">
+    <a href="#contact" class="btn-primary sans">Schedule a Consultation</a>
+    <span class="cta-note sans">We respond within 1 business day.</span>
+  </div>
+</div>
 
-        <div class="contact-left">
-          <span class="section-label reveal" data-i18n="contact.label">Contact</span>
-          <h2 id="contact-heading" class="reveal reveal-delay-1" data-i18n-html="contact.headline">
-            Let's start<br>a conversation.
-          </h2>
-          <p class="reveal reveal-delay-2" data-i18n="contact.sub">
-            Ready to streamline your finances, accelerate permitting, or scale your operations? Reach out — we respond within one business day.
-          </p>
-
-          <div class="contact-info reveal reveal-delay-3">
-            <div class="contact-item">
-              <div class="contact-item-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-                </svg>
-              </div>
-              <div class="contact-item-body">
-                <span class="contact-item-label" data-i18n="contact.phone.label">Phone</span>
-                <a href="tel:7865853106" class="contact-item-value">786-585-3106</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div class="contact-item-body">
-                <span class="contact-item-label" data-i18n="contact.email.label">Email</span>
-                <a href="mailto:goodcarterllc@gmail.com" class="contact-item-value">goodcarterllc@gmail.com</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div class="contact-item-body">
-                <span class="contact-item-label" data-i18n="contact.location.label">Service Area</span>
-                <span class="contact-item-value" data-i18n="contact.location.value">South Florida — Miami-Dade · Broward · Palm Beach</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-right reveal reveal-delay-2">
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-name" data-i18n="form.name">Full Name</label>
-                <input type="text" id="f-name" name="name" autocomplete="name" required />
-              </div>
-              <div class="form-group">
-                <label for="f-email" data-i18n="form.email">Email Address</label>
-                <input type="email" id="f-email" name="email" autocomplete="email" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="f-company" data-i18n="form.company">Company / Trade</label>
-              <input type="text" id="f-company" name="company" />
-            </div>
-            <div class="form-group">
-              <label for="f-message" data-i18n="form.message">How can we help?</label>
-              <textarea id="f-message" name="message" required></textarea>
-            </div>
-            <div class="form-submit">
-              <button type="submit" class="btn-primary-dark" data-i18n="form.submit">Schedule a Consultation</button>
-              <span class="form-note" data-i18n="form.note">We respond within 1 business day.</span>
-            </div>
-            <div class="form-success" id="form-success" role="alert" data-i18n="form.success">
-              Thank you — we'll be in touch shortly.
-            </div>
-          </form>
-        </div>
-
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-tag sans">Contact</div>
+    <h2>Let's start a<br>conversation.</h2>
+    <p class="sans">Ready to organize your finances, manage your back office, or scale your operations? Reach out — we respond within one business day.</p>
+    <div class="contact-detail">
+      <div class="contact-detail-label sans">Phone</div>
+      <div class="contact-detail-val sans"><a href="tel:7865853106">786-585-3106</a></div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-label sans">Email</div>
+      <div class="contact-detail-val sans"><a href="mailto:carterautomationllc@gmail.com">carterautomationllc@gmail.com</a></div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-label sans">Website</div>
+      <div class="contact-detail-val sans"><a href="https://carterautomation.us">carterautomation.us</a></div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-label sans">Service Area</div>
+      <div class="contact-detail-val sans">South Florida — Miami-Dade · Broward</div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-field">
+        <label class="sans">Full Name</label>
+        <input type="text" name="name" placeholder="Your name" required>
       </div>
-    </div>
-  </section>
+      <div class="form-field">
+        <label class="sans">Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-field">
+        <label class="sans">Company / Trade</label>
+        <input type="text" name="company" placeholder="e.g. ABC HVAC LLC">
+      </div>
+      <div class="form-field">
+        <label class="sans">How can we help?</label>
+        <textarea name="message" placeholder="Tell us about your business and what you need..."></textarea>
+      </div>
+      <button type="submit" class="form-submit sans">Schedule a Consultation</button>
+      <p class="form-note sans" id="formNote">We respond within 1 business day.</p>
+    </form>
+  </div>
+</section>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer>
-    <div class="container footer-inner">
-      <span class="footer-logo">Carter<span>.</span></span>
-      <ul class="footer-links">
-        <li><a href="#about"    data-i18n="nav.about">About</a></li>
-        <li><a href="#services" data-i18n="nav.services">Services</a></li>
-        <li><a href="#contact"  data-i18n="nav.contact">Contact</a></li>
-      </ul>
-      <span class="footer-copy">&copy; <span id="year"></span> Carter Consulting LLC</span>
-    </div>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand sans">Carter.</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services-section">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy sans">© 2025 Carter Automation LLC</div>
+</footer>
 
-  <!-- ============================================================
-       JAVASCRIPT
-  ============================================================ -->
-  <script>
-    // ── i18n Content ──────────────────────────────────────────────
-    const translations = {
-      en: {
-        "nav.about":    "About",
-        "nav.services": "Services",
-        "nav.approach": "Approach",
-        "nav.contact":  "Contact",
-
-        "hero.eyebrow":  "Consulting Firm · South Florida",
-        "hero.headline": "Precision.<br><em>Built for Business.</em>",
-        "hero.sub":      "Financial strategy, permit expediting, and business development — engineered for construction and real estate professionals.",
-        "hero.cta1":     "Schedule a Consultation",
-        "hero.cta2":     "Our Services",
-        "hero.scroll":   "Scroll",
-
-        "about.label":   "About Carter",
-        "about.headline":"A firm built on<br>precision and results.",
-        "about.p1":      "Carter is a consulting firm dedicated to the financial and operational success of construction and real estate companies. We bring clarity to complex processes — from bookkeeping to permitting — so our clients can build with confidence.",
-        "about.p2":      "Our approach is direct, meticulous, and results-oriented. We operate as a true partner, not just a service provider.",
-        "about.tag1":    "Construction",
-        "about.tag2":    "Real Estate",
-        "about.tag3":    "HVAC",
-        "about.tag4":    "South Florida",
-        "about.stat1":   "Core Service Areas",
-        "about.stat2":   "Industry-Focused",
-        "about.stat3":   "Bilingual Service",
-        "about.stat4":   "Local Miami Expertise",
-
-        "services.label":   "Services",
-        "services.headline":"What we do,<br>done right.",
-        "services.fin.title": "Financial Services",
-        "services.fin.desc":  "Complete financial management for contractors and developers — from daily bookkeeping to long-term planning.",
-        "services.fin.l1":    "Accounting",
-        "services.fin.l2":    "Bookkeeping",
-        "services.fin.l3":    "Tax Preparation & Strategy",
-        "services.fin.l4":    "Financial Planning & Reporting",
-        "services.permit.title": "Permit Expediting",
-        "services.permit.desc":  "Navigate city permitting with zero delays. We handle the paperwork so your projects stay on schedule.",
-        "services.permit.l1":    "City Permit Handling",
-        "services.permit.l2":    "All Trades & Project Types",
-        "services.permit.l3":    "Fast, Compliant Processing",
-        "services.permit.l4":    "Status Tracking & Follow-up",
-        "services.biz.title": "Business Development",
-        "services.biz.desc":  "Operational systems, marketing advisory, and software consulting to grow your business intelligently.",
-        "services.biz.l1":    "Workflow System Implementation",
-        "services.biz.l2":    "Marketing Advisory",
-        "services.biz.l3":    "Accounting Software Consulting",
-        "services.biz.l4":    "Project Management Tools",
-
-        "trust.headline": "We don't just consult.<br>We <em>deliver outcomes.</em>",
-        "trust.p1.title": "Precision",
-        "trust.p1.desc":  "Every engagement is approached with meticulous attention to detail. Accuracy is non-negotiable.",
-        "trust.p2.title": "Industry Expertise",
-        "trust.p2.desc":  "We specialize in construction and real estate — not general practice. Your industry is our depth.",
-        "trust.p3.title": "Partnership",
-        "trust.p3.desc":  "We operate as an extension of your team — proactive, accountable, and fully aligned with your goals.",
-        "trust.cta":      "Work With Us",
-        "trust.ctanote":  "Available in English & Spanish",
-
-        "contact.label":          "Contact",
-        "contact.headline":       "Let's start<br>a conversation.",
-        "contact.sub":            "Ready to streamline your finances, accelerate permitting, or scale your operations? Reach out — we respond within one business day.",
-        "contact.phone.label":    "Phone",
-        "contact.email.label":    "Email",
-        "contact.location.label": "Service Area",
-        "contact.location.value": "South Florida — Miami-Dade · Broward · Palm Beach",
-        "form.name":    "Full Name",
-        "form.email":   "Email Address",
-        "form.company": "Company / Trade",
-        "form.message": "How can we help?",
-        "form.submit":  "Schedule a Consultation",
-        "form.note":    "We respond within 1 business day.",
-        "form.success": "Thank you — we'll be in touch shortly.",
-      },
-
-      es: {
-        "nav.about":    "Nosotros",
-        "nav.services": "Servicios",
-        "nav.approach": "Enfoque",
-        "nav.contact":  "Contacto",
-
-        "hero.eyebrow":  "Firma de Consultoría · Sur de Florida",
-        "hero.headline": "Precisión.<br><em>Construida para Negocios.</em>",
-        "hero.sub":      "Estrategia financiera, expedición de permisos y desarrollo empresarial — diseñados para profesionales de la construcción y bienes raíces.",
-        "hero.cta1":     "Agendar Consulta",
-        "hero.cta2":     "Nuestros Servicios",
-        "hero.scroll":   "Desplazar",
-
-        "about.label":   "Sobre Carter",
-        "about.headline":"Una firma construida sobre<br>precisión y resultados.",
-        "about.p1":      "Carter es una firma de consultoría dedicada al éxito financiero y operativo de empresas de construcción y bienes raíces. Aportamos claridad a procesos complejos — desde la contabilidad hasta los permisos — para que nuestros clientes construyan con confianza.",
-        "about.p2":      "Nuestro enfoque es directo, meticuloso y orientado a resultados. Operamos como verdaderos socios, no solo como proveedores de servicios.",
-        "about.tag1":    "Construcción",
-        "about.tag2":    "Bienes Raíces",
-        "about.tag3":    "HVAC",
-        "about.tag4":    "Sur de Florida",
-        "about.stat1":   "Áreas de Servicio",
-        "about.stat2":   "Enfoque Industrial",
-        "about.stat3":   "Servicio Bilingüe",
-        "about.stat4":   "Experiencia Local Miami",
-
-        "services.label":   "Servicios",
-        "services.headline":"Lo que hacemos,<br>bien hecho.",
-        "services.fin.title": "Servicios Financieros",
-        "services.fin.desc":  "Gestión financiera completa para contratistas y promotores — desde la contabilidad diaria hasta la planificación a largo plazo.",
-        "services.fin.l1":    "Contabilidad",
-        "services.fin.l2":    "Teneduría de Libros",
-        "services.fin.l3":    "Preparación y Estrategia Fiscal",
-        "services.fin.l4":    "Planificación y Reportes Financieros",
-        "services.permit.title": "Expedición de Permisos",
-        "services.permit.desc":  "Navegue los permisos municipales sin demoras. Nosotros manejamos el papeleo para que sus proyectos se mantengan en calendario.",
-        "services.permit.l1":    "Gestión de Permisos Municipales",
-        "services.permit.l2":    "Todos los Oficios y Tipos de Proyecto",
-        "services.permit.l3":    "Procesamiento Rápido y Conforme",
-        "services.permit.l4":    "Seguimiento de Estado",
-        "services.biz.title": "Desarrollo Empresarial",
-        "services.biz.desc":  "Sistemas operativos, asesoría de marketing y consultoría de software para hacer crecer su empresa de forma inteligente.",
-        "services.biz.l1":    "Implementación de Sistemas de Flujo",
-        "services.biz.l2":    "Asesoría de Marketing",
-        "services.biz.l3":    "Consultoría de Software Contable",
-        "services.biz.l4":    "Herramientas de Gestión de Proyectos",
-
-        "trust.headline": "No solo consultamos.<br><em>Entregamos resultados.</em>",
-        "trust.p1.title": "Precisión",
-        "trust.p1.desc":  "Cada encargo se aborda con meticulosa atención al detalle. La exactitud no es negociable.",
-        "trust.p2.title": "Experiencia Sectorial",
-        "trust.p2.desc":  "Nos especializamos en construcción y bienes raíces — no en práctica general. Su industria es nuestra profundidad.",
-        "trust.p3.title": "Asociación",
-        "trust.p3.desc":  "Operamos como una extensión de su equipo — proactivos, responsables y totalmente alineados con sus objetivos.",
-        "trust.cta":      "Trabajar con Nosotros",
-        "trust.ctanote":  "Disponible en Inglés y Español",
-
-        "contact.label":          "Contacto",
-        "contact.headline":       "Iniciemos<br>una conversación.",
-        "contact.sub":            "¿Listo para optimizar sus finanzas, acelerar permisos o escalar sus operaciones? Contáctenos — respondemos en un día hábil.",
-        "contact.phone.label":    "Teléfono",
-        "contact.email.label":    "Correo",
-        "contact.location.label": "Área de Servicio",
-        "contact.location.value": "Sur de Florida — Miami-Dade · Broward · Palm Beach",
-        "form.name":    "Nombre Completo",
-        "form.email":   "Correo Electrónico",
-        "form.company": "Empresa / Oficio",
-        "form.message": "¿Cómo podemos ayudarle?",
-        "form.submit":  "Agendar Consulta",
-        "form.note":    "Respondemos en 1 día hábil.",
-        "form.success": "Gracias — nos pondremos en contacto pronto.",
-      }
-    };
-
-    // ── Apply translations ──────────────────────────────────────
-    let currentLang = 'en';
-
-    function setLang(lang) {
-      currentLang = lang;
-      const t = translations[lang];
-
-      // Update plain text nodes
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) el.textContent = t[key];
-      });
-
-      // Update innerHTML (allows <em>, <br>)
-      document.querySelectorAll('[data-i18n-html]').forEach(el => {
-        const key = el.getAttribute('data-i18n-html');
-        if (t[key] !== undefined) el.innerHTML = t[key];
-      });
-
-      // Update placeholders
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        if (t[key] !== undefined) el.placeholder = t[key];
-      });
-
-      // Toggle button states
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
-      document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es');
-
-      // Update html lang attribute
-      document.documentElement.lang = lang;
-    }
-
-    // ── Nav scroll behavior ────────────────────────────────────
-    const nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    // ── Mobile nav ─────────────────────────────────────────────
-    const menuBtn   = document.getElementById('menu-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    const menuClose = document.getElementById('menu-close');
-
-    menuBtn.addEventListener('click', () => {
-      mobileNav.classList.add('open');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    });
-
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    menuClose.addEventListener('click', closeMobileNav);
-
-    // Close on backdrop tap
-    mobileNav.addEventListener('click', e => {
-      if (e.target === mobileNav) closeMobileNav();
-    });
-
-    // ── Intersection Observer for reveal animations ────────────
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ── Contact form (mailto fallback) ─────────────────────────
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const name    = form.querySelector('#f-name').value.trim();
-      const email   = form.querySelector('#f-email').value.trim();
-      const company = form.querySelector('#f-company').value.trim();
-      const message = form.querySelector('#f-message').value.trim();
-
-      if (!name || !email || !message) return;
-
-      const subject = encodeURIComponent(`Carter Consulting Inquiry — ${name}`);
-      const body    = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`
-      );
-
-      window.location.href = `mailto:goodcarterllc@gmail.com?subject=${subject}&body=${body}`;
-
-      // Show success message
-      const successEl = document.getElementById('form-success');
-      successEl.style.display = 'block';
-      form.reset();
-
-      setTimeout(() => { successEl.style.display = 'none'; }, 6000);
-    });
-
-    // ── Footer year ────────────────────────────────────────────
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ── Trigger hero reveals immediately ───────────────────────
-    setTimeout(() => {
-      document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
-    }, 200);
-  </script>
-
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+function toggleLang(btn){
+  const isES = btn.textContent.trim() === 'ES / EN';
+  btn.textContent = isES ? 'EN / ES' : 'ES / EN';
+}
+function handleSubmit(e){
+  e.preventDefault();
+  const note = document.getElementById('formNote');
+  note.textContent = 'Thank you — we\'ll be in touch shortly.';
+  note.style.color = '#1A3C6E';
+  e.target.reset();
+}
+</script>
 </body>
 </html>
