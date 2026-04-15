@@ -4,15 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carter Automation — Back Office & Financial Advisory</title>
-<meta name="description" content="Back office and financial advisory for HVAC, electrical, and construction contractors in South Florida. Accounting, payroll, invoices, collections, and more.">
+<meta name="description" content="Back office and financial advisory for HVAC, electrical, and construction contractors in South Florida.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#0D0D0D;--ink2:#444;--ink3:#888;--line:rgba(0,0,0,0.1);--bg:#FAFAF8;--accent:#1A3C6E}
 html{scroll-behavior:smooth}
 body{font-family:'Georgia',serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
 .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
-
-/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:0.5px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:100}
 .nav-brand{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:18px;font-weight:500;letter-spacing:.06em;color:var(--ink);text-decoration:none}
 .nav-links{display:flex;gap:32px}
@@ -24,8 +22,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .nav-mobile-btn span{display:block;width:22px;height:1px;background:var(--ink)}
 .nav-mobile-menu{display:none;flex-direction:column;gap:0;border-top:0.5px solid var(--line)}
 .nav-mobile-menu a{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);text-decoration:none;padding:16px 48px;border-bottom:0.5px solid var(--line);letter-spacing:.04em;text-transform:uppercase}
-
-/* HERO */
 #hero{padding:100px 48px 80px;border-bottom:0.5px solid var(--line)}
 .hero-tag{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px}
 #hero h1{font-size:52px;font-weight:400;line-height:1.15;max-width:640px;margin-bottom:24px}
@@ -38,15 +34,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .btn-secondary:hover{color:var(--ink)}
 .scroll-hint{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.06em;margin-top:56px;display:flex;align-items:center;gap:8px}
 .scroll-hint:after{content:'';display:block;width:32px;height:0.5px;background:var(--ink3)}
-
-/* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:0.5px solid var(--line)}
 .stat{padding:32px 48px;border-right:0.5px solid var(--line)}
 .stat:last-child{border-right:none}
 .stat-num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:4px}
 .stat-label{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
-
-/* ABOUT */
 #about{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--line)}
 .about-left{padding:64px 48px;border-right:0.5px solid var(--line)}
 .about-right{padding:64px 48px}
@@ -62,13 +54,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .pillar:last-child{border-bottom:none;padding-bottom:0}
 .pillar-title{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;font-weight:500;margin-bottom:6px}
 .pillar-desc{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);line-height:1.7}
-
-/* SERVICES */
 .services-header{padding:64px 48px 40px;border-bottom:0.5px solid var(--line)}
 .services-header h2{font-size:30px;font-weight:400;line-height:1.3}
 .services-header h2 em{font-style:italic;color:var(--accent)}
 #services{border-bottom:0.5px solid var(--line)}
-.service-item{display:grid;grid-template-columns:80px 1fr 1fr;border-bottom:0.5px solid var(--line);padding:48px 48px;gap:32px;align-items:start}
+.service-item{display:grid;grid-template-columns:80px 1fr 1fr;border-bottom:0.5px solid var(--line);padding:48px;gap:32px;align-items:start}
 .service-item:last-child{border-bottom:none}
 .service-num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.08em;padding-top:6px}
 .service-title{font-size:22px;font-weight:400;margin-bottom:14px}
@@ -76,9 +66,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .service-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);font-style:italic}
 .service-bullets{list-style:none;display:flex;flex-direction:column;gap:10px}
 .service-bullets li{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
-.service-bullets li:before{content:"—";color:var(--ink3);flex-shrink:0;margin-top:0}
-
-/* APPROACH */
+.service-bullets li:before{content:"—";color:var(--ink3);flex-shrink:0}
 #approach{padding:64px 48px;border-bottom:0.5px solid var(--line)}
 #approach h2{font-size:30px;font-weight:400;margin-bottom:40px;line-height:1.3}
 #approach h2 em{font-style:italic;color:var(--accent)}
@@ -87,15 +75,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .approach-card:last-child{border-right:none}
 .approach-card-title{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;margin-bottom:10px}
 .approach-card-desc{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink2);line-height:1.7}
-
-/* CTA BAR */
 .cta-bar{padding:80px 48px;border-bottom:0.5px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .cta-bar h2{font-size:36px;font-weight:400;max-width:480px;line-height:1.25}
 .cta-bar h2 em{font-style:italic;color:var(--accent)}
 .cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .cta-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3)}
-
-/* CONTACT */
 #contact{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--line)}
 .contact-left{padding:64px 48px;border-right:0.5px solid var(--line)}
 .contact-right{padding:64px 48px}
@@ -107,22 +91,18 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .contact-detail-val a{color:var(--ink);text-decoration:none}
 .form-field{margin-bottom:24px}
 .form-field label{display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-.form-field input,.form-field textarea,.form-field select{width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink);background:transparent;border:none;border-bottom:0.5px solid var(--ink);padding:8px 0;outline:none;border-radius:0}
+.form-field input,.form-field textarea{width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink);background:transparent;border:none;border-bottom:0.5px solid var(--ink);padding:8px 0;outline:none;border-radius:0}
 .form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--accent)}
 .form-field textarea{resize:none;height:90px}
 .form-submit{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;padding:13px 28px;border:none;cursor:pointer;border-radius:2px;margin-top:8px;transition:opacity .2s}
 .form-submit:hover{opacity:.85}
 .form-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);margin-top:12px}
-
-/* FOOTER */
 footer{display:flex;align-items:center;justify-content:space-between;padding:24px 48px;flex-wrap:wrap;gap:16px}
 .footer-brand{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;letter-spacing:.04em}
 .footer-links{display:flex;gap:24px}
 .footer-links a{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3);text-decoration:none}
 .footer-links a:hover{color:var(--ink)}
 .footer-copy{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:var(--ink3)}
-
-/* RESPONSIVE */
 @media(max-width:768px){
   nav{padding:16px 24px}
   .nav-links{display:none}
@@ -155,156 +135,144 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:24p
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-brand">Carter.</a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#approach">Approach</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-en="About" data-es="Nosotros">About</a>
+    <a href="#services" data-en="Services" data-es="Servicios">Services</a>
+    <a href="#approach" data-en="Approach" data-es="Enfoque">Approach</a>
+    <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
   </div>
-  <button class="nav-lang" onclick="toggleLang(this)">EN / ES</button>
+  <button class="nav-lang" id="langBtn" onclick="toggleLang()">EN / ES</button>
   <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="nav-mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#approach" onclick="closeMenu()">Approach</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#about" onclick="closeMenu()" data-en="About" data-es="Nosotros">About</a>
+  <a href="#services" onclick="closeMenu()" data-en="Services" data-es="Servicios">Services</a>
+  <a href="#approach" onclick="closeMenu()" data-en="Approach" data-es="Enfoque">Approach</a>
+  <a href="#contact" onclick="closeMenu()" data-en="Contact" data-es="Contacto">Contact</a>
 </div>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-tag sans">Back Office Firm · South Florida</div>
-  <h1>Your back office,<br><em>fully managed.</em></h1>
-  <p class="hero-sub sans">Accounting, payroll, invoices, collections, and financial strategy — engineered for HVAC, electrical, and construction contractors.</p>
+  <div class="hero-tag sans" data-en="Back Office Firm · South Florida" data-es="Firma de Back Office · Sur de Florida">Back Office Firm · South Florida</div>
+  <h1 data-en="Your back office,<br><em>fully managed.</em>" data-es="Tu back office,<br><em>completamente manejado.</em>">Your back office,<br><em>fully managed.</em></h1>
+  <p class="hero-sub sans" data-en="Accounting, payroll, invoices, collections, and financial strategy — engineered for HVAC, electrical, and construction contractors." data-es="Contabilidad, payroll, invoices, cobranzas y estrategia financiera — diseñado para contratistas de HVAC, eléctrico y construcción.">Accounting, payroll, invoices, collections, and financial strategy — engineered for HVAC, electrical, and construction contractors.</p>
   <div class="hero-btns">
-    <a href="#contact" class="btn-primary sans">Schedule a Consultation</a>
-    <button class="btn-secondary sans" onclick="document.getElementById('services-section').scrollIntoView({behavior:'smooth'})">Our Services</button>
+    <a href="#contact" class="btn-primary sans" data-en="Schedule a Consultation" data-es="Agendar una Consulta">Schedule a Consultation</a>
+    <button class="btn-secondary sans" onclick="document.getElementById('services-section').scrollIntoView({behavior:'smooth'})" data-en="Our Services" data-es="Nuestros Servicios">Our Services</button>
   </div>
-  <div class="scroll-hint sans">Scroll</div>
+  <div class="scroll-hint sans" data-en="Scroll" data-es="Desplazar">Scroll</div>
 </section>
 
-<!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Service Tiers</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Industry-Focused</div></div>
-  <div class="stat"><div class="stat-num">EN / ES</div><div class="stat-label">Bilingual Service</div></div>
-  <div class="stat"><div class="stat-num">786</div><div class="stat-label">Local Miami Expertise</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label" data-en="Service Tiers" data-es="Niveles de Servicio">Service Tiers</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-en="Industry-Focused" data-es="Enfocado en la Industria">Industry-Focused</div></div>
+  <div class="stat"><div class="stat-num">EN / ES</div><div class="stat-label" data-en="Bilingual Service" data-es="Servicio Bilingüe">Bilingual Service</div></div>
+  <div class="stat"><div class="stat-num">786</div><div class="stat-label" data-en="Local Miami Expertise" data-es="Experiencia Local en Miami">Local Miami Expertise</div></div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-left">
-    <div class="section-tag sans">About Carter</div>
-    <h2>A firm built on<br><em>precision and results.</em></h2>
-    <p class="sans">Carter Automation is a back office and financial advisory firm dedicated to the operational success of contractors in South Florida. We handle everything behind the scenes so you can focus on the jobs and getting clients — nothing else.</p>
-    <p class="sans">Our approach is direct, meticulous, and results-oriented. We work as a true partner, not just a service provider. And we operate with one clear goal: position your company to qualify for financing and grow to the next level.</p>
+    <div class="section-tag sans" data-en="About Carter" data-es="Sobre Carter">About Carter</div>
+    <h2 data-en="A firm built on<br><em>precision and results.</em>" data-es="Una firma construida sobre<br><em>precisión y resultados.</em>">A firm built on<br><em>precision and results.</em></h2>
+    <p class="sans" data-en="Carter Automation is a back office and financial advisory firm dedicated to the operational success of contractors in South Florida. We handle everything behind the scenes so you can focus on the jobs and getting clients — nothing else." data-es="Carter Automation es una firma de back office y asesoría financiera dedicada al éxito operacional de contratistas en el Sur de Florida. Nos encargamos de todo detrás de escena para que te concentres en los trabajos y conseguir clientes — nada más.">Carter Automation is a back office and financial advisory firm dedicated to the operational success of contractors in South Florida. We handle everything behind the scenes so you can focus on the jobs and getting clients — nothing else.</p>
+    <p class="sans" data-en="Our approach is direct, meticulous, and results-oriented. We work as a true partner, not just a service provider. And we operate with one clear goal: position your company to qualify for financing and grow to the next level." data-es="Nuestro enfoque es directo, meticuloso y orientado a resultados. Trabajamos como un verdadero socio, no solo como un proveedor de servicios. Operamos con un objetivo claro: posicionar tu empresa para calificar para financiamiento y crecer al siguiente nivel.">Our approach is direct, meticulous, and results-oriented. We work as a true partner, not just a service provider. And we operate with one clear goal: position your company to qualify for financing and grow to the next level.</p>
     <div class="tag-row">
-      <span class="tag">HVAC</span>
-      <span class="tag">Electrical</span>
-      <span class="tag">Construction</span>
-      <span class="tag">Miami-Dade</span>
-      <span class="tag">Broward</span>
-      <span class="tag">QBO ProAdvisor</span>
+      <span class="tag">HVAC</span><span class="tag">Electrical</span><span class="tag">Construction</span>
+      <span class="tag">Miami-Dade</span><span class="tag">Broward</span><span class="tag">QBO ProAdvisor</span>
     </div>
   </div>
   <div class="about-right">
     <div class="pillars">
       <div class="pillar">
-        <div class="pillar-title sans">Precision</div>
-        <div class="pillar-desc sans">Every engagement is approached with meticulous attention to detail. Accuracy is non-negotiable — your books reflect your business.</div>
+        <div class="pillar-title sans" data-en="Precision" data-es="Precisión">Precision</div>
+        <div class="pillar-desc sans" data-en="Every engagement is approached with meticulous attention to detail. Accuracy is non-negotiable — your books reflect your business." data-es="Cada compromiso se aborda con meticulosa atención al detalle. La exactitud no es negociable — tus libros reflejan tu negocio.">Every engagement is approached with meticulous attention to detail. Accuracy is non-negotiable — your books reflect your business.</div>
       </div>
       <div class="pillar">
-        <div class="pillar-title sans">Industry Expertise</div>
-        <div class="pillar-desc sans">We specialize in contractors — not general practice. HVAC, electrical, and construction is our depth, not a category.</div>
+        <div class="pillar-title sans" data-en="Industry Expertise" data-es="Experiencia en la Industria">Industry Expertise</div>
+        <div class="pillar-desc sans" data-en="We specialize in contractors — not general practice. HVAC, electrical, and construction is our depth, not a category." data-es="Nos especializamos en contratistas — no en práctica general. HVAC, eléctrico y construcción es nuestra profundidad, no una categoría.">We specialize in contractors — not general practice. HVAC, electrical, and construction is our depth, not a category.</div>
       </div>
       <div class="pillar">
-        <div class="pillar-title sans">Partnership</div>
-        <div class="pillar-desc sans">We operate as an extension of your team — proactive, accountable, and fully aligned with your growth goals.</div>
+        <div class="pillar-title sans" data-en="Partnership" data-es="Alianza">Partnership</div>
+        <div class="pillar-desc sans" data-en="We operate as an extension of your team — proactive, accountable, and fully aligned with your growth goals." data-es="Operamos como una extensión de tu equipo — proactivos, responsables y totalmente alineados con tus objetivos de crecimiento.">We operate as an extension of your team — proactive, accountable, and fully aligned with your growth goals.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
 <div class="services-header" id="services-section">
-  <div class="section-tag sans">Services</div>
-  <h2>What we do, <em>done right.</em></h2>
+  <div class="section-tag sans" data-en="Services" data-es="Servicios">Services</div>
+  <h2 data-en="What we do, <em>done right.</em>" data-es="Lo que hacemos, <em>bien hecho.</em>">What we do, <em>done right.</em></h2>
 </div>
 <div id="services">
   <div class="service-item">
     <div class="service-num sans">01</div>
     <div>
-      <div class="service-title">Full Back Office +<br>Financial Advisory</div>
-      <p class="service-desc sans">We manage your entire back office so you focus on the work and getting clients — nothing else. The most complete level of support we offer.</p>
-      <p class="service-note sans">Best for growing contractors who want everything handled.</p>
+      <div class="service-title" data-en="Full Back Office +<br>Financial Advisory" data-es="Back Office Completo +<br>Asesoría Financiera">Full Back Office +<br>Financial Advisory</div>
+      <p class="service-desc sans" data-en="We manage your entire back office so you focus on the work and getting clients — nothing else. The most complete level of support we offer." data-es="Manejamos todo tu back office para que te enfoques en el trabajo y conseguir clientes — nada más. El nivel de soporte más completo que ofrecemos.">We manage your entire back office so you focus on the work and getting clients — nothing else. The most complete level of support we offer.</p>
+      <p class="service-note sans" data-en="Best for growing contractors who want everything handled." data-es="Ideal para contratistas en crecimiento que quieren que todo esté manejado.">Best for growing contractors who want everything handled.</p>
     </div>
     <ul class="service-bullets">
-      <li>Accounting &amp; bookkeeping up to date</li>
-      <li>Payroll &amp; 1099s for subcontractors</li>
-      <li>Quotes &amp; invoices to your clients</li>
-      <li>Collections — we follow up on payments for you</li>
-      <li>Engineers for permit plans &amp; calculations</li>
-      <li>Loan qualification strategy &amp; CFO advisory</li>
-      <li>Marketing team connection (optional, separate cost)</li>
+      <li data-en="Accounting &amp; bookkeeping up to date" data-es="Accounting y bookkeeping al día">Accounting &amp; bookkeeping up to date</li>
+      <li data-en="Payroll &amp; 1099s for subcontractors" data-es="Payroll y 1099s para subcontratistas">Payroll &amp; 1099s for subcontractors</li>
+      <li data-en="Quotes &amp; invoices to your clients" data-es="Cotizaciones e invoices a tus clientes">Quotes &amp; invoices to your clients</li>
+      <li data-en="Collections — we follow up on payments for you" data-es="Cobranzas — nosotros damos seguimiento a los pagos por ti">Collections — we follow up on payments for you</li>
+      <li data-en="Engineers for permit plans &amp; calculations" data-es="Ingenieros para planos y cálculos de permisos">Engineers for permit plans &amp; calculations</li>
+      <li data-en="Loan qualification strategy &amp; CFO advisory" data-es="Estrategia para calificar préstamos y asesoría CFO">Loan qualification strategy &amp; CFO advisory</li>
+      <li data-en="Marketing team connection (optional, separate cost)" data-es="Conexión con equipo de marketing (opcional, costo aparte)">Marketing team connection (optional, separate cost)</li>
     </ul>
   </div>
   <div class="service-item">
     <div class="service-num sans">02</div>
     <div>
-      <div class="service-title">Accounting &amp;<br>Bookkeeping</div>
-      <p class="service-desc sans">Keep your books clean and your numbers clear. The right foundation for any contractor serious about their finances.</p>
-      <p class="service-note sans">Perfect starting point. Upgrade to Full Back Office anytime.</p>
+      <div class="service-title" data-en="Accounting &amp;<br>Bookkeeping" data-es="Accounting y<br>Bookkeeping">Accounting &amp;<br>Bookkeeping</div>
+      <p class="service-desc sans" data-en="Keep your books clean and your numbers clear. The right foundation for any contractor serious about their finances." data-es="Mantén tus libros limpios y tus números claros. La base correcta para cualquier contratista serio con sus finanzas.">Keep your books clean and your numbers clear. The right foundation for any contractor serious about their finances.</p>
+      <p class="service-note sans" data-en="Perfect starting point. Upgrade to Full Back Office anytime." data-es="Punto de partida perfecto. Actualiza a Back Office Completo cuando quieras.">Perfect starting point. Upgrade to Full Back Office anytime.</p>
     </div>
     <ul class="service-bullets">
-      <li>Accounting &amp; bookkeeping up to date</li>
-      <li>Monthly bank reconciliation</li>
-      <li>P&amp;L, Balance Sheet &amp; Cash Flow reports</li>
+      <li data-en="Accounting &amp; bookkeeping up to date" data-es="Accounting y bookkeeping al día">Accounting &amp; bookkeeping up to date</li>
+      <li data-en="Monthly bank reconciliation" data-es="Reconciliación bancaria mensual">Monthly bank reconciliation</li>
+      <li data-en="P&amp;L, Balance Sheet &amp; Cash Flow reports" data-es="Reportes de P&amp;L, Balance Sheet y Cash Flow">P&amp;L, Balance Sheet &amp; Cash Flow reports</li>
     </ul>
   </div>
 </div>
 
-<!-- APPROACH -->
 <section id="approach">
-  <div class="section-tag sans">Approach</div>
-  <h2>We don't just consult. We <em>deliver outcomes.</em></h2>
+  <div class="section-tag sans" data-en="Approach" data-es="Enfoque">Approach</div>
+  <h2 data-en="We don't just consult. We <em>deliver outcomes.</em>" data-es="No solo asesoramos. <em>Entregamos resultados.</em>">We don't just consult. We <em>deliver outcomes.</em></h2>
   <div class="approach-grid">
     <div class="approach-card">
-      <div class="approach-card-title sans">Precision</div>
-      <div class="approach-card-desc sans">Every number is reconciled, every filing is on time. We treat your books like they're our own.</div>
+      <div class="approach-card-title sans" data-en="Precision" data-es="Precisión">Precision</div>
+      <div class="approach-card-desc sans" data-en="Every number is reconciled, every filing is on time. We treat your books like they're our own." data-es="Cada número está reconciliado, cada presentación es a tiempo. Tratamos tus libros como si fueran los nuestros.">Every number is reconciled, every filing is on time. We treat your books like they're our own.</div>
     </div>
     <div class="approach-card">
-      <div class="approach-card-title sans">Loan-Ready Books</div>
-      <div class="approach-card-desc sans">We organize your finances with a clear objective: qualify for credit lines, SBA loans, and take your company to the next level.</div>
+      <div class="approach-card-title sans" data-en="Loan-Ready Books" data-es="Libros Listos para Préstamos">Loan-Ready Books</div>
+      <div class="approach-card-desc sans" data-en="We organize your finances with a clear objective: qualify for credit lines, SBA loans, and take your company to the next level." data-es="Organizamos tus finanzas con un objetivo claro: calificar para líneas de crédito, SBA loans y llevar tu empresa al siguiente nivel.">We organize your finances with a clear objective: qualify for credit lines, SBA loans, and take your company to the next level.</div>
     </div>
     <div class="approach-card">
-      <div class="approach-card-title sans">No Long-Term Contracts</div>
-      <div class="approach-card-desc sans">Month-to-month. If you don't see value, you don't stay. We earn your business every month.</div>
+      <div class="approach-card-title sans" data-en="No Long-Term Contracts" data-es="Sin Contratos a Largo Plazo">No Long-Term Contracts</div>
+      <div class="approach-card-desc sans" data-en="Month-to-month. If you don't see value, you don't stay. We earn your business every month." data-es="Mes a mes. Si no ves valor, no te quedas. Nos ganamos tu negocio cada mes.">Month-to-month. If you don't see value, you don't stay. We earn your business every month.</div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <div class="cta-bar">
-  <h2>Ready to streamline your business and <em>grow?</em></h2>
+  <h2 data-en="Ready to streamline your business and <em>grow?</em>" data-es="¿Listo para optimizar tu negocio y <em>crecer?</em>">Ready to streamline your business and <em>grow?</em></h2>
   <div class="cta-right">
-    <a href="#contact" class="btn-primary sans">Schedule a Consultation</a>
-    <span class="cta-note sans">We respond within 1 business day.</span>
+    <a href="#contact" class="btn-primary sans" data-en="Schedule a Consultation" data-es="Agendar una Consulta">Schedule a Consultation</a>
+    <span class="cta-note sans" data-en="We respond within 1 business day." data-es="Respondemos dentro de 1 día hábil.">We respond within 1 business day.</span>
   </div>
 </div>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-left">
-    <div class="section-tag sans">Contact</div>
-    <h2>Let's start a<br>conversation.</h2>
-    <p class="sans">Ready to organize your finances, manage your back office, or scale your operations? Reach out — we respond within one business day.</p>
+    <div class="section-tag sans" data-en="Contact" data-es="Contacto">Contact</div>
+    <h2 data-en="Let's start a<br>conversation." data-es="Empecemos una<br>conversación.">Let's start a<br>conversation.</h2>
+    <p class="sans" data-en="Ready to organize your finances, manage your back office, or scale your operations? Reach out — we respond within one business day." data-es="¿Listo para organizar tus finanzas, manejar tu back office o escalar tus operaciones? Contáctanos — respondemos dentro de un día hábil.">Ready to organize your finances, manage your back office, or scale your operations? Reach out — we respond within one business day.</p>
     <div class="contact-detail">
-      <div class="contact-detail-label sans">Phone</div>
+      <div class="contact-detail-label sans" data-en="Phone" data-es="Teléfono">Phone</div>
       <div class="contact-detail-val sans"><a href="tel:7865853106">786-585-3106</a></div>
     </div>
     <div class="contact-detail">
@@ -316,60 +284,83 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:24p
       <div class="contact-detail-val sans"><a href="https://carterautomation.us">carterautomation.us</a></div>
     </div>
     <div class="contact-detail">
-      <div class="contact-detail-label sans">Service Area</div>
-      <div class="contact-detail-val sans">South Florida — Miami-Dade · Broward</div>
+      <div class="contact-detail-label sans" data-en="Service Area" data-es="Área de Servicio">Service Area</div>
+      <div class="contact-detail-val sans" data-en="South Florida — Miami-Dade · Broward" data-es="Sur de Florida — Miami-Dade · Broward">South Florida — Miami-Dade · Broward</div>
     </div>
   </div>
   <div class="contact-right">
     <form onsubmit="handleSubmit(event)">
       <div class="form-field">
-        <label class="sans">Full Name</label>
-        <input type="text" name="name" placeholder="Your name" required>
+        <label class="sans" data-en="Full Name" data-es="Nombre Completo">Full Name</label>
+        <input type="text" name="name" data-en-ph="Your name" data-es-ph="Tu nombre" placeholder="Your name" required>
       </div>
       <div class="form-field">
-        <label class="sans">Email Address</label>
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label class="sans" data-en="Email Address" data-es="Correo Electrónico">Email Address</label>
+        <input type="email" name="email" data-en-ph="your@email.com" data-es-ph="tu@correo.com" placeholder="your@email.com" required>
       </div>
       <div class="form-field">
-        <label class="sans">Company / Trade</label>
-        <input type="text" name="company" placeholder="e.g. ABC HVAC LLC">
+        <label class="sans" data-en="Company / Trade" data-es="Empresa / Oficio">Company / Trade</label>
+        <input type="text" name="company" data-en-ph="e.g. ABC HVAC LLC" data-es-ph="ej. ABC HVAC LLC" placeholder="e.g. ABC HVAC LLC">
       </div>
       <div class="form-field">
-        <label class="sans">How can we help?</label>
-        <textarea name="message" placeholder="Tell us about your business and what you need..."></textarea>
+        <label class="sans" data-en="How can we help?" data-es="¿Cómo podemos ayudarte?">How can we help?</label>
+        <textarea name="message" data-en-ph="Tell us about your business and what you need..." data-es-ph="Cuéntanos sobre tu negocio y lo que necesitas..." placeholder="Tell us about your business and what you need..."></textarea>
       </div>
-      <button type="submit" class="form-submit sans">Schedule a Consultation</button>
-      <p class="form-note sans" id="formNote">We respond within 1 business day.</p>
+      <button type="submit" class="form-submit sans" data-en="Schedule a Consultation" data-es="Agendar una Consulta">Schedule a Consultation</button>
+      <p class="form-note sans" id="formNote" data-en="We respond within 1 business day." data-es="Respondemos dentro de 1 día hábil.">We respond within 1 business day.</p>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand sans">Carter.</div>
   <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#services-section">Services</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-en="About" data-es="Nosotros">About</a>
+    <a href="#services-section" data-en="Services" data-es="Servicios">Services</a>
+    <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
   </div>
   <div class="footer-copy sans">© 2025 Carter Automation LLC</div>
 </footer>
 
 <script>
-function toggleMenu(){
+let lang = 'en';
+
+function toggleLang() {
+  lang = lang === 'en' ? 'es' : 'en';
+  document.getElementById('langBtn').textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
+  applyLang();
+}
+
+function applyLang() {
+  // Translate innerHTML elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+  // Translate placeholders
+  document.querySelectorAll('[data-en-ph]').forEach(el => {
+    const ph = el.getAttribute('data-' + lang + '-ph');
+    if (ph) el.placeholder = ph;
+  });
+  // Reset form note if not submitted
+  const note = document.getElementById('formNote');
+  if (note && note.style.color !== 'rgb(26, 60, 110)') {
+    note.textContent = note.getAttribute('data-' + lang);
+  }
+}
+
+function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
-function closeMenu(){
+
+function closeMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
 }
-function toggleLang(btn){
-  const isES = btn.textContent.trim() === 'ES / EN';
-  btn.textContent = isES ? 'EN / ES' : 'ES / EN';
-}
-function handleSubmit(e){
+
+function handleSubmit(e) {
   e.preventDefault();
   const note = document.getElementById('formNote');
-  note.textContent = 'Thank you — we\'ll be in touch shortly.';
+  note.textContent = lang === 'en' ? "Thank you — we'll be in touch shortly." : 'Gracias — nos pondremos en contacto pronto.';
   note.style.color = '#1A3C6E';
   e.target.reset();
 }
